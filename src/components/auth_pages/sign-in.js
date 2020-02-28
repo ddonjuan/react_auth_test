@@ -49,7 +49,7 @@ class SignIn extends Component {
                         />
                         <Link className="" to="/reset-password">Forgot Password</Link>
                         <Link className="create-new-account" to="create-account">Create a New Accoun</Link>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <Link type="submit" to="/home" className="btn btn-primary">Submit</Link>
                     </div>
 
                 </div>
