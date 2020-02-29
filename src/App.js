@@ -8,14 +8,20 @@ import CreateAccount from './components/auth_pages/create-account';
 import ResetPassword from './components/auth_pages/password-reset';
 import Home from './components/user_pages/home';
 import MyProvider, { MyContext } from './components/config/firebase';
+import axios from 'axios';
 import './stylesheets/App.css';
 
-console.log("this is the api key: ", process.env.REACT_APP_API_KEY);
 
 
 class App extends Component {
   constructor(props) {
     super(props);
+  }
+  componentDidMount() {
+    this.getAPIKeys();
+  }
+  getAPIKeys() {
+    console.log("these are supposed to be the env files names: ", process.env.REACT_APP_API_KEY);
   }
 
   render() {
