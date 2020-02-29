@@ -1,4 +1,5 @@
 import React, {useState, Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import firebase from 'firebase';
 import axios from 'axios';
 
@@ -31,13 +32,6 @@ class MyProvider extends Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.resetState = this.resetState.bind(this);
     }
-    resetState(){
-        this.setState({
-            email: "",
-            password: ""
-        });
-    }
-
     handleInputChange(event) {
         const { name, value } = event.target;
 
@@ -45,23 +39,25 @@ class MyProvider extends Component{
             [name]: value
         });
     }
+    resetState(){
+        this.setState({
+            email: '',
+            password: ''
+        })
+    }
 
-    signIn(event, email, password){
-        event.preventDefault();
-        fire.auth().signInWithEmailAndPassword(email, password).then((u)=>{
+    signIn(){
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
             console.log("successful sign in: ", u);
-            this.resetState();
             this.props.history.push("/home");
-
+            this.resetState();
         }).catch((err)=>{
             console.log("an error has occured: " ,err);
         })
     }
-    signOut(event){
-        event.preventDefault();
+    signOut(){
         fire.auth().signOut().then((u)=>{
             console.log("You have successfully signed out: ", u);
-            this.resetState();
             this.props.history.push("/sign-out");
         }).catch((err)=>{
             console.log("you have not signed out yet. Error has occured: ", err);
@@ -106,4 +102,4 @@ class MyProvider extends Component{
         )
     }
 }
-export default MyProvider;
+export default withRouter(MyProvider);
