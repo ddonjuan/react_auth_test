@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const server = express();
+require('dotenv').config()
 
 
 
@@ -16,7 +17,7 @@ server.use(bodyParser.urlencoded({extended : false}));
 
 
 
-// require("./routes")(server);
+require("./routes")(server);
 
 
 
