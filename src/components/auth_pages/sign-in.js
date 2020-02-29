@@ -22,14 +22,17 @@ class SignIn extends Component {
     //     });
     // }
 
+
     render() {
-        console.log("this is the state of the sign in page: ", this.state)
+        // console.log("this is the state of the sign in page: ", this.state)
+        // const {email, password} = this.state;
 
         return (
-            <form>
-                <MyContext.Consumer>
-                    {(context) => (
-                        <React.Fragment>
+            <MyContext.Consumer>
+                {(context) => (
+                    <React.Fragment>
+                        <form onSubmit={(e)=>{e.preventDefault();context.signIn()}}>
+
                             <div className="row d-flex justify-content-center">
                                 <div className="logo">Company Name</div>
                             </div>
@@ -53,15 +56,16 @@ class SignIn extends Component {
                                     />
                                     <Link className="" to="/reset-password">Forgot Password</Link>
                                     <Link className="create-new-account" to="create-account">Create a New Accoun</Link>
-                                    <Link type="submit" to="/home" className="btn btn-primary">Submit</Link>
+                                    <button type="submit" className="btn btn-primary">Sign In</button>
                                 </div>
 
                             </div>
-                        </React.Fragment>
-                    )}
+                        </form>
 
-                </MyContext.Consumer>
-            </form>
+                    </React.Fragment>
+                )}
+
+            </MyContext.Consumer>
         )
 
     }
