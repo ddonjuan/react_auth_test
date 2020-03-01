@@ -1,8 +1,6 @@
 import React, {useState, Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import firebase from 'firebase';
-import axios from 'axios';
-
 
 export const MyContext = React.createContext();
 
@@ -23,7 +21,8 @@ class MyProvider extends Component{
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            confirmPassword: ''
         }
         this.signIn = this.signIn.bind(this);
         this.signUp = this.signUp.bind(this);
@@ -32,6 +31,7 @@ class MyProvider extends Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.resetState = this.resetState.bind(this);
     }
+
     handleInputChange(event) {
         const { name, value } = event.target;
 
@@ -39,11 +39,13 @@ class MyProvider extends Component{
             [name]: value
         });
     }
+
     resetState(){
         this.setState({
             email: '',
-            password: ''
-        })
+            password: '',
+            confirmPassword: ''
+        });
     }
 
     signIn(){
@@ -51,35 +53,36 @@ class MyProvider extends Component{
             console.log("successful sign in: ", u);
             this.props.history.push("/home");
             this.resetState();
+            this.props.toggleUserNav();
         }).catch((err)=>{
             console.log("an error has occured: " ,err);
         })
     }
+
     signOut(){
         fire.auth().signOut().then((u)=>{
             console.log("You have successfully signed out: ", u);
             this.props.history.push("/sign-out");
+            this.props.toggleLandingNav();
         }).catch((err)=>{
             console.log("you have not signed out yet. Error has occured: ", err);
         })
     }
-    signUp(event, email, password){
-        event.preventDefault();
 
-        fire.auth().createUserWithEmailAndPassword(email, password).then((u) => {
+    signUp(){
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
             console.log("successfully created an account: ", u);
-            this.resetState();
             this.props.history.push("/sign-in");
+            this.resetState();
         }).catch((err) =>{console.log("error in signing up", err)});
 
     }
-    resetPassword(event, email){
-        event.preventDefault();
-        
-        fire.auth().sendPasswordResetEmail(email).then((u)=>{
+
+    resetPassword(){
+        fire.auth().sendPasswordResetEmail(this.state.email).then((u)=>{
             console.log("Email reset was successful: ", u);
-            this.resetState();
             this.props.history.push("/password-reset");
+            this.resetState();
         }).catch((err)=>{
             console.log("error has occurred: ", err);
         });
@@ -87,7 +90,7 @@ class MyProvider extends Component{
 
 
     render(){
-        console.log("This is the state in firebase context: ", this.state);
+        console.log("this is the state attr: ", this.props)
         return(
             <MyContext.Provider value={{
                 state: this.state,
@@ -102,4 +105,4 @@ class MyProvider extends Component{
         )
     }
 }
-export default withRouter(MyProvider);
+export default withRouter(MyProvider); 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import InputField from '../helpers/inputs/inputs';
 import { MyContext } from '../config/firebase';
 import { Link, withRouter } from 'react-router-dom';
+import "../../stylesheets/auth_pages/helpers.css";
 
 class SignIn extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class SignIn extends Component {
                                 <div className="logo">Company Name</div>
                             </div>
                             <div id="input-container" className="row d-flex justify-content-center">
-                                <div id="sign-in" className="col-10 col-sm-4 col-md-10 col-lg-3">
+                                <div id="sign-in" className="col-10 col-sm-4 col-md-5 col-lg-3">
                                     <InputField
                                         onChange={context.handleInputChange}
                                         labelName="Email"
@@ -54,8 +55,8 @@ class SignIn extends Component {
                                         inputType="password"
                                         smallText="Please enter your password"
                                     />
-                                    <Link className="" to="/reset-password">Forgot Password</Link>
-                                    <Link className="create-new-account" to="create-account">Create a New Accoun</Link>
+                                    <div className="auth-btn-space"><Link to="/create-account">Sign Up</Link></div>
+                                    <div className="auth-btn-space"><Link to="/reset-password">Forgot Password</Link></div>
                                     <button type="submit" className="btn btn-primary">Sign In</button>
                                 </div>
 
@@ -72,4 +73,4 @@ class SignIn extends Component {
 
 }
 
-export default withRouter(SignIn);
+export default SignIn;
