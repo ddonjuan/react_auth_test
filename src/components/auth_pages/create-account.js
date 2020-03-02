@@ -7,42 +7,9 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
 
-        // this.state = {
-        //     email: '',
-        //     newPassword: ''
-        // }
-        // this.handleInputChange = this.handleInputChange.bind(this);
-        // this.onSubmit = this.onSubmit.bind(this);
     }
 
-    // handleInputChange(event){
-    //     const {name, value} = event.target;  
-
-    //     this.setState({
-    //         [name] : value
-    //     });
-    // }
-    // onSubmit(event){
-    //     event.preventDefault();
-
-    //     const {email, newPassword} = this.state;
-
-    //     fire.auth().createUserWithEmailAndPassword(email, newPassword).then((u) => {
-    //         console.log("successfully created an account: ", u);
-    //         this.setState({
-    //             email: '',
-    //             newPassword: '',
-    //             confirmPassword: ''
-    //         });
-    //         this.props.history.push(ROUTES.SIGN_IN);
-    //     }).catch((err) =>{console.log("error in signing up", err)});
-
-    // }
-
     render() {
-
-        // const {email, newPassword, confirmPassword} = this.state;
-        // console.log("this is the state in the sign up page: ", this.state);
 
         return (
             <MyContext.Consumer>

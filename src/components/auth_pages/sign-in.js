@@ -8,25 +8,9 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
 
-        // this.state = {
-        //     email: '',
-        //     password: ''
-        // }
-        // this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    // handleInputChange(event) {
-    //     const { name, value } = event.target;
-
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // }
-
-
     render() {
-        // console.log("this is the state of the sign in page: ", this.state)
-        // const {email, password} = this.state;
 
         return (
             <MyContext.Consumer>
