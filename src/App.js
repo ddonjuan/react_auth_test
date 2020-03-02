@@ -23,18 +23,7 @@ class App extends Component {
     this.toggleUserNavbar = this.toggleUserNavbar.bind(this);
     this.toggleLandingNavbar = this.toggleLandingNavbar.bind(this);
   }
-  // componentDidMount(){
-  //   console.log("this is the history: ", this.props.history)
 
-  // }
-  // componentDidUpdate(){
-  //   console.log("this is the history: ", this.props.history)
-  //   if(this.props.history.location.pathname === "/home"){
-  //     this.setState({
-
-  //     })
-  //   }
-  // }
   toggleUserNavbar(){
     this.setState({
       userNav: true

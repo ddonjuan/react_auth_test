@@ -5,20 +5,8 @@ import { MyContext } from '../config/firebase';
 class ResetPassword extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     email: ""
-        // }
 
-        // this.handleInputChange = this.handleInputChange.bind(this);
     }
-
-    // handleInputChange(event) {
-    //     const { name, value } = event.target;
-
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // }
 
     render() {
         return (
