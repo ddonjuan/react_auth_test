@@ -18,10 +18,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state={
-      userNav: false
+      userNav: false,
+      toggleLinks: false
     }
     this.toggleUserNavbar = this.toggleUserNavbar.bind(this);
     this.toggleLandingNavbar = this.toggleLandingNavbar.bind(this);
+    this.toggleLandingLinksOff = this.toggleLandingLinksOff.bind(this);
+    this.toggleLandingLinksOn = this.toggleLandingLinksOn.bind(this);
+
   }
 
   toggleUserNavbar(){
@@ -34,8 +38,22 @@ class App extends Component {
       userNav: false
     });
   }
+  toggleLandingLinksOff(){
+
+      this.setState({toggleLinks: true});
+    
+  }
+  toggleLandingLinksOn(){
+
+    this.setState({toggleLinks: false});
+  
+}
+
+  
+
   render() {
-    const navbarToggle = this.state.userNav ? <UserNav/> : <LandingNav/>;
+    const navbarToggle = this.state.userNav ? <UserNav/> : <LandingNav toggleLinks={this.state.toggleLinks} toggleLinksOn={this.toggleLandingLinksOn} toggleLinksOff={this.toggleLandingLinksOff}/>;
+    console.log("this is the state of toggle: ", this.state.toggleLinks);
     return (
       <MyProvider toggleUserNav={this.toggleUserNavbar} toggleLandingNav={this.toggleLandingNavbar}>
         <div className="App container-fluid">
