@@ -1,0 +1,19 @@
+.sign-in-container{
+    height: 92%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.logo{
+    color: white;
+    margin: 4%;
+}
+.info-parent-container{
+    border: 5px solid rgba(17,54,109,.2);
+    width: 50%;
+    height: 70%;
+    margin-top: 7%;
+ }
+#sign-in{
+    color: white;
+}
