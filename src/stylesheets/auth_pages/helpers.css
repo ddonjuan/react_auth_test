@@ -1,3 +1,8 @@
 .auth-btn-space{
     margin: 1.5%;
 }
+.auth-pages-picture{
+    background-image: url("../../images/fire_start_landing_pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
